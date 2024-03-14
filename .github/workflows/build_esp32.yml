@@ -18,18 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Prepare to Build Tensorflow Micropython Firmware for ESP32
-        run: |
-          git submodule init
-          git submodule update --recursive
-          cd micropython
-          git submodule update --init lib/axtls
-          git submodule update --init lib/berkeley-db-1.xx
-          cd ports/esp32
-          make BOARD= submodules
-          cd ../../..
-          cd tflm_esp_kernels
-          git submodule update --init components/esp32-camera
-          git submodule update --init components/esp-nn
+
       - name: Get Cache Keys
         # later get this like this: git ls-remote --heads https://github.com/espressif/esp-idf
         # this commit is hard-coded in micropython/tools/ci.sh
